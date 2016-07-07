@@ -18,6 +18,17 @@
       $dau.done(function(results) {
         console.log(results.values());
       });
+      
+      var $mau = MP.api.segment(eventName, 'mp_country_code', { // use segment query on eventName, and segment the data by country
+      from: moment().subtract(30, 'days'),                  // 'from' date should be one month ago
+      to: moment().subtract(1, 'days'),                     // 'to' date should be yesterday; partial data for today impacts DAU more than it does MAU
+      unit: 'month',                                        // we want the number of button clicks that occured over the month
+      type: 'unique'                                        // multiple clicks by the same person during any point in the month should be counted only once
+      });
+
+      $mau.done(function(results) {
+          console.log(results.values());
+      });
     </script>
   </body>
 </html>
