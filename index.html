@@ -30,7 +30,10 @@
         // average the DAU values and divide them by the MAU ones
         // (we sum the MAU in the case where the 30 days spans over two months)
         var dauMau = dau.avg().divide(mau.sum()).values();
-        console.log(dauMau);
+       $('<div></div>').appendTo('body').MPChart({ // create chart
+            chartType: 'bar',                       // make it a bar chart
+            data: dauMau                            // set its data
+        });
       });
     </script>
   </body>
