@@ -26,7 +26,10 @@
       type: 'unique'                                        // multiple clicks by the same person during any point in the month should be counted only once
       });
 
-         var dauMau = dau.avg().divide(mau.sum()).values();
+           $.when($dau, $mau).done(function(dau, mau) {
+        // average the DAU values and divide them by the MAU ones
+        // (we sum the MAU in the case where the 30 days spans over two months)
+        var dauMau = dau.avg().divide(mau.sum()).values();
         console.log(dauMau);
       });
     </script>
