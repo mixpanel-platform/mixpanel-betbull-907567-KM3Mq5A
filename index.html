@@ -26,8 +26,9 @@
       type: 'unique'                                        // multiple clicks by the same person during any point in the month should be counted only once
       });
 
-      $mau.done(function(results) {
-          console.log(results.values());
+    
+      $.when($dau, $mau).done(function(dau, mau) {
+        alert('Success!');
       });
     </script>
   </body>
